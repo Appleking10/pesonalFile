@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="./css/animate.css">
+    <link rel="stylesheet" href="../../icomoon/style.css">
+    <link rel="stylesheet" href="../../css/coolmenu.css">
+    <title>阿庞的照片墙</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background-color: rgba(214, 114, 83, 0.6);
+            margin: 0;
+            font-family: Helvetica, sans-serif;
+            ;
+            overflow: hidden;
+        }
+
+        a {
+            color: #ffffff;
+        }
+
+        #info {
+            position: absolute;
+            width: 100%;
+            color: #ffffff;
+            padding: 5px;
+            font-family: Monospace;
+            font-size: 13px;
+            font-weight: bold;
+            text-align: center;
+            z-index: 1;
+        }
+
+        #menu {
+            position: absolute;
+            bottom: 20px;
+            width: calc(100% - 100px);
+            text-align: center;
+        }
+
+        .element {
+            width: 120px;
+            height: 120px;
+            box-shadow: 0px 0px 12px rgba(22, 56, 66, 0.81);
+            border: 1px solid rgba(127, 255, 255, 0.25);
+            text-align: center;
+            cursor: default;
+        }
+
+        .element:hover {
+            box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.75);
+            border: 1px solid rgba(127, 255, 255, 0.75);
+        }
+
+        button {
+            color: rgba(255, 255, 255, 0.75);
+            background: transparent;
+            border: 3px solid #f3d3b9;
+            /* box-shadow: 0 0 9px 2px #f3d3b9, 0 0 9px 2px #f3d3b9 inset; */
+            /* border: 0px; */
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgba(0, 255, 255, 0.5);
+        }
+
+        button:active {
+            color: #000000;
+            background-color: rgba(255, 255, 255, 0.75);
+        }
+
+        .popWin {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        .content-wrap {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 30px;
+            text-align: center;
+            line-height: 500px;
+            background: ghostwhite;
+        }
+
+        .closeBtn {
+            height: 30px;
+            width: 200px;
+            border-radius: 20px;
+            line-height: 30px;
+            background: cornflowerblue;
+            color: navajowhite;
+            text-align: center;
+        }
+
+        #outmenu {
+            position: absolute;
+            /* width: 150px; */
+            /* height: 150px; */
+            bottom: 30px;
+            right: 10px;
+            z-index: 10;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="../../js/jquery-2.1.1.min.js"></script>
+
+    <script src="js/three.min.js"></script>
+    <script src="js/tween.min.js"></script>
+    <script src="js/TrackballControls.js"></script>
+    <script src="js/CSS3DRenderer.js"></script>
+
+
+    <div id="container"></div>
+    <div id="menu">
+        <button id="table">PY❤</button>
+        <button id="sphere">滚球球</button>
+        <button id="helix">团起来</button>
+        <button id="grid">我方了</button>
+    </div>
+    <div class="popWin bounceIn" id="popWin">
+        <div class="content-wrap">这是放照片/视频的地方</div>
+        <div class="closeBtn" id="closeBtn">返回</div>
+    </div>
+    <div class="mobile-canvas" id="mobile-canvas">
+        <div class="button-container">
+            <div class="button-wrapper">
+                <div class="button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="button-child-wrapper">
+                    <div class="button-child icon-pictures" id="gotophoto">
+
+
+                    </div>
+                    <div class="button-child">
+
+                        <svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+                            <desc>Created with Sketch.</desc>
+                            <defs></defs>
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Artboard-3-Copy" transform="translate(-18.000000, -18.000000)" fill="#FC3E9F">
+                                    <path
+                                        d="M40.3415158,38.3323418 L39.2478752,38.3323418 L39.2478752,40.8217803 C39.2478752,42.0229102 38.2667233,43 37.0605939,43 C35.8544646,43 34.8733127,42.0229102 34.8733127,40.8217803 L34.8733127,34.5983402 C34.8733127,33.3968978 35.8544646,32.419808 37.0605939,32.419808 C38.2667233,32.419808 39.2478752,33.3968978 39.2478752,34.5983402 L39.2478752,37.0877787 L40.3415158,37.0877787 C41.1164384,37.0877787 41.7476252,36.4590916 41.7476252,35.6872938 L41.7476252,30.4471928 C41.7476252,24.2671858 36.7043796,19.244563 30.4987501,19.244563 C28.6864314,19.244563 26.8928607,19.6801445 25.2992701,20.5144361 C24.9930507,20.6700455 24.6118388,20.5516198 24.4556044,20.2466503 C24.2931207,19.9416808 24.4118588,19.5682807 24.7180782,19.4064219 C26.4866513,18.4855764 28.4864514,18 30.4987501,18 C37.3918108,18 42.9975002,23.5825667 42.9975002,30.4471928 L42.9975002,35.6872938 C42.9975002,37.1437106 41.8038696,38.3323418 40.3415158,38.3323418 Z M37.9980002,34.5983402 C37.9980002,34.0815168 37.5792921,33.6646835 37.0605939,33.6646835 C36.5418958,33.6646835 36.1231877,34.0815168 36.1231877,34.5983402 L36.1231877,40.8217803 C36.1231877,41.3382912 36.5418958,41.755437 37.0605939,41.755437 C37.5792921,41.755437 37.9980002,41.3382912 37.9980002,40.8217803 L37.9980002,34.5983402 Z M26.1241876,34.5983402 L26.1241876,40.8217803 C26.1241876,42.0229102 25.1430357,43 23.9369063,43 C22.7307769,43 21.749625,42.0229102 21.749625,40.8217803 L21.749625,38.3323418 L20.6559844,38.3323418 C19.1936306,38.3323418 18,37.1437106 18,35.6872938 L18,30.4471928 C18,27.8083942 18.8186681,25.2877087 20.3622638,23.1594841 C20.5684932,22.8791996 20.9559544,22.8232677 21.2371763,23.0223103 C21.5183982,23.2216653 21.5808919,23.6135011 21.3746625,23.8875362 C19.9873013,25.8042196 19.249875,28.0758674 19.249875,30.4471928 L19.249875,35.6872938 C19.249875,36.4590916 19.8810619,37.0877787 20.6559844,37.0877787 L21.749625,37.0877787 L21.749625,34.5983402 C21.749625,33.3968978 22.7307769,32.419808 23.9369063,32.419808 C25.1430357,32.419808 26.1241876,33.3968978 26.1241876,34.5983402 Z M24.8743126,34.5983402 C24.8743126,34.0815168 24.4556044,33.6646835 23.9369063,33.6646835 C23.4182082,33.6646835 22.9995,34.0815168 22.9995,34.5983402 L22.9995,40.8217803 C22.9995,41.3382912 23.4182082,41.755437 23.9369063,41.755437 C24.4556044,41.755437 24.8743126,41.3382912 24.8743126,40.8217803 L24.8743126,34.5983402 Z"
+                                        id="Shape"></path>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="button-child">
+
+                        <svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+                            <desc>Created with Sketch.</desc>
+                            <defs></defs>
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Artboard-3-Copy-2" transform="translate(-18.000000, -18.000000)" fill="#FC3E9F">
+                                    <path
+                                        d="M38.6259375,34.6907325 C38.97125,34.6907325 39.2509375,34.9723337 39.2509375,35.3192564 C39.2509375,35.6664916 38.97125,35.9480929 38.6259375,35.9480929 L37.6884375,35.9480929 C37.3428125,35.9480929 37.0634375,35.6664916 37.0634375,35.3192564 C37.0634375,34.9723337 37.3428125,34.6907325 37.6884375,34.6907325 L38.6259375,34.6907325 Z M34.563125,34.6907325 C34.9084375,34.6907325 35.188125,34.9723337 35.188125,35.3192564 C35.188125,35.6664916 34.9084375,35.9480929 34.563125,35.9480929 L33.625625,35.9480929 C33.28,35.9480929 33.000625,35.6664916 33.000625,35.3192564 C33.000625,34.9723337 33.28,34.6907325 33.625625,34.6907325 L34.563125,34.6907325 Z M41.3971875,39.8286264 L41.11875,39.8286264 L41.11875,42.3714761 C41.11875,42.6105715 40.98375,42.8287264 40.7709375,42.9349911 C40.6828125,42.9784345 40.5884375,43 40.49375,43 C40.359375,43 40.225625,42.956244 40.1146875,42.8709198 L36.15125,39.8286264 L31.089375,39.8286264 C30.205,39.8286264 29.4859375,39.105402 29.4859375,38.2165298 L29.4859375,35.2492468 C29.4859375,34.9023241 29.7653125,34.6207228 30.1109375,34.6207228 C30.45625,34.6207228 30.7359375,34.9023241 30.7359375,35.2492468 L30.7359375,38.2165298 C30.7359375,38.4121817 30.8946875,38.571266 31.089375,38.571266 L36.3625,38.571266 C36.5,38.571266 36.6328125,38.6168973 36.7415625,38.7003463 L39.86875,41.1006763 L39.86875,39.2001025 C39.86875,38.8528673 40.148125,38.571266 40.49375,38.571266 L41.3971875,38.571266 C41.591875,38.571266 41.75,38.4121817 41.75,38.2165298 L41.75,32.3938542 C41.75,32.1985148 41.591875,32.0391179 41.3971875,32.0391179 L31.089375,32.0391179 C30.8946875,32.0391179 30.7359375,32.1985148 30.7359375,32.3938542 C30.7359375,32.7410894 30.45625,33.0226906 30.1109375,33.0226906 C29.7653125,33.0226906 29.4859375,32.7410894 29.4859375,32.3938542 C29.4859375,31.5049819 30.205,30.7817575 31.089375,30.7817575 L41.3971875,30.7817575 C42.2809375,30.7817575 43,31.5049819 43,32.3938542 L43,38.2165298 C43,39.105402 42.2809375,39.8286264 41.3971875,39.8286264 Z M31.1253125,23.3757392 C31.4709375,23.3757392 31.7503125,23.6573404 31.7503125,24.0042631 C31.7503125,24.3514983 31.4709375,24.6330996 31.1253125,24.6330996 L30.1878125,24.6330996 C29.8421875,24.6330996 29.5628125,24.3514983 29.5628125,24.0042631 C29.5628125,23.6573404 29.8421875,23.3757392 30.1878125,23.3757392 L31.1253125,23.3757392 Z M27.2184375,23.3757392 C27.5640625,23.3757392 27.8434375,23.6573404 27.8434375,24.0042631 C27.8434375,24.3514983 27.5640625,24.6330996 27.2184375,24.6330996 L26.2809375,24.6330996 C25.935625,24.6330996 25.6559375,24.3514983 25.6559375,24.0042631 C25.6559375,23.6573404 25.935625,23.3757392 26.2809375,23.3757392 L27.2184375,23.3757392 Z M23.3121875,23.3757392 C23.6578125,23.3757392 23.9375,23.6573404 23.9375,24.0042631 C23.9375,24.3514983 23.6578125,24.6330996 23.3121875,24.6330996 L22.3746875,24.6330996 C22.029375,24.6330996 21.7496875,24.3514983 21.7496875,24.0042631 C21.7496875,23.6573404 22.029375,23.3757392 22.3746875,23.3757392 L23.3121875,23.3757392 Z M33.5784375,29.5787796 L26.8025,29.5787796 L21.496875,33.6515271 C21.3859375,33.7368513 21.2521875,33.7802948 21.1178125,33.7802948 C21.0234375,33.7802948 20.92875,33.7590419 20.8409375,33.7152859 C20.6278125,33.6090212 20.4928125,33.3908662 20.4928125,33.1517709 L20.4928125,29.5787796 L19.9209375,29.5787796 C18.861875,29.5787796 18,28.7120979 18,27.6469515 L18,24.1205291 C18,23.7732938 18.2796875,23.4916926 18.625,23.4916926 C18.970625,23.4916926 19.25,23.7732938 19.25,24.1205291 L19.25,27.6469515 C19.25,28.0188776 19.5509375,28.3214192 19.9209375,28.3214192 L21.1178125,28.3214192 C21.4634375,28.3214192 21.743125,28.6030204 21.743125,28.9499431 L21.743125,31.8809711 L26.2121875,28.4504994 C26.3209375,28.3670505 26.4540625,28.3214192 26.59125,28.3214192 L33.5784375,28.3214192 C33.9484375,28.3214192 34.249375,28.0188776 34.249375,27.6469515 L34.249375,19.9315156 C34.249375,19.559902 33.9484375,19.2573604 33.5784375,19.2573604 L19.9209375,19.2573604 C19.5509375,19.2573604 19.25,19.559902 19.25,19.9315156 L19.25,21.1101151 C19.25,21.4570378 18.970625,21.7386391 18.625,21.7386391 C18.2796875,21.7386391 18,21.4570378 18,21.1101151 L18,19.9315156 C18,18.8663691 18.861875,18 19.9209375,18 L33.5784375,18 C34.6375,18 35.499375,18.8663691 35.499375,19.9315156 L35.499375,27.6469515 C35.499375,28.7120979 34.6375,29.5787796 33.5784375,29.5787796 Z"
+                                        id="Shape"></path>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </div>
+    <script>
+        var table = [];
+        for (var j = 5; j < 45; j++) {
+            table.push("../../img/" + j + ".jpg");
+        }
+        console.log(table)
+        var camera, scene, renderer;
+        var controls;
+
+        var objects = [];
+        var targets = {
+            table: [],
+            sphere: [],
+            helix: [],
+            grid: []
+        };
+
+        init();
+        animate();
+
+        function init() {
+
+            camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 10000);
+            camera.position.z = 3000;
+
+            scene = new THREE.Scene();
+            // table
+            var xytup = [{
+                x: -480,
+                y: 720
+            }, {
+                x: -480,
+                y: 590
+            }, {
+                x: -480,
+                y: 460
+            }, {
+                x: -480,
+                y: 330
+            }, {
+                x: -480,
+                y: 200
+            }, {
+                x: -480,
+                y: 70
+            }, {
+                x: -480,
+                y: -60
+            }, {
+                x: -480,
+                y: -190
+            }, {
+                x: -350,
+                y: 720
+            }, {
+                x: -220,
+                y: 708
+            }, {
+                x: -90,
+                y: 684
+            }, {
+                x: -45,
+                y: 554
+            }, {
+                x: -90,
+                y: 424
+            }, {
+                x: -220,
+                y: 360
+            }, {
+                x: -350,
+                y: 336
+            }, {
+                x: 120,
+                y: 720
+            }, {
+                x: 180,
+                y: 600
+            }, {
+                x: 240,
+                y: 480
+            }, {
+                x: 360,
+                y: 360
+            }, {
+                x: 480,
+                y: 480
+            }, {
+                x: 540,
+                y: 600
+            }, {
+                x: 600,
+                y: 720
+            }, {
+                x: 360,
+                y: 240
+            }, {
+                x: 360,
+                y: 120
+            }, {
+                x: 360,
+                y: 0
+            }, {
+                x: 360,
+                y: -120
+            }, {
+                x: 0,
+                y: -480
+            }, {
+                x: -120,
+                y: -360
+            }, {
+                x: 120,
+                y: -360
+            }, {
+                x: 240,
+                y: -300
+            }, {
+                x: -240,
+                y: -300
+            }, {
+                x: -360,
+                y: -360
+            }, {
+                x: 360,
+                y: -360
+            }, {
+                x: -360,
+                y: -480
+            }, {
+                x: 360,
+                y: -480
+            }, {
+                x: -240,
+                y: -600
+            }, {
+                x: 240,
+                y: -600
+            }, {
+                x: 120,
+                y: -720
+            }, {
+                x: -120,
+                y: -720
+            }, {
+                x: 0,
+                y: -840
+            }]
+            for (var i = 0; i < table.length; i++) {
+
+                var element = document.createElement('div');
+                element.className = 'element';
+                element.style.background = 'url(' + table[i] + ')';
+                element.style.backgroundSize = "100%"
+
+                var object = new THREE.CSS3DObject(element);
+                object.position.x = Math.random() * 4000 - 2000;
+                object.position.y = Math.random() * 4000 - 2000;
+                object.position.z = Math.random() * 4000 - 2000;
+
+                element.addEventListener('click', elClick.bind(this, element, i))
+
+                scene.add(object);
+
+                objects.push(object);
+                var object = new THREE.Object3D();
+                if (xytup[i]) {
+                    object.position.x = xytup[i].x;
+                    object.position.y = xytup[i].y
+                }
+
+                targets.table.push(object);
+
+            }
+
+            // sphere
+
+            var vector = new THREE.Vector3();
+
+            for (var i = 0, l = objects.length; i < l; i++) {
+
+                var phi = Math.acos(-1 + (2 * i) / l);
+                var theta = Math.sqrt(l * Math.PI) * phi;
+
+                var object = new THREE.Object3D();
+
+                object.position.x = 800 * Math.cos(theta) * Math.sin(phi);
+                object.position.y = 800 * Math.sin(theta) * Math.sin(phi);
+                object.position.z = 800 * Math.cos(phi);
+
+                vector.copy(object.position).multiplyScalar(2);
+
+                object.lookAt(vector);
+
+                targets.sphere.push(object);
+
+            }
+
+            // helix
+
+            var vector = new THREE.Vector3();
+
+            for (var i = 0, l = objects.length; i < l; i++) {
+
+                var phi = i * 0.175 + Math.PI;
+
+                var object = new THREE.Object3D();
+
+                object.position.x = 900 * Math.sin(phi);
+                object.position.y = -(i * 8) + 450;
+                object.position.z = 900 * Math.cos(phi);
+
+                vector.x = object.position.x * 2;
+                vector.y = object.position.y;
+                vector.z = object.position.z * 2;
+
+                object.lookAt(vector);
+
+                targets.helix.push(object);
+
+            }
+
+            // grid
+
+            for (var i = 0; i < objects.length; i++) {
+
+                var object = new THREE.Object3D();
+
+                object.position.x = ((i % 4) * 400) - 800;
+                object.position.y = (-(Math.floor(i / 4) % 4) * 400) + 800;
+                object.position.z = (Math.floor(i / 16)) * 1000 - 2000;
+
+                targets.grid.push(object);
+
+            }
+
+            //
+
+            renderer = new THREE.CSS3DRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.domElement.style.position = 'absolute';
+            document.getElementById('container').appendChild(renderer.domElement);
+
+            //
+
+            controls = new THREE.TrackballControls(camera, renderer.domElement);
+            controls.rotateSpeed = 0.5;
+            controls.minDistance = 500;
+            controls.maxDistance = 6000;
+            controls.addEventListener('change', render);
+
+            var button = document.getElementById('table');
+            button.addEventListener('click', function (event) {
+
+                transform(targets.table, 2000);
+
+            }, false);
+
+            var button = document.getElementById('sphere');
+            button.addEventListener('click', function (event) {
+
+                transform(targets.sphere, 2000);
+
+            }, false);
+
+            var button = document.getElementById('helix');
+            button.addEventListener('click', function (event) {
+
+                transform(targets.helix, 2000);
+
+            }, false);
+
+            var button = document.getElementById('grid');
+            button.addEventListener('click', function (event) {
+
+                transform(targets.grid, 2000);
+
+            }, false);
+
+            transform(targets.table, 5000);
+
+            //
+
+            window.addEventListener('resize', onWindowResize, false);
+
+        }
+
+        function elClick(el, index) {
+            // console.log(el.style.backgroundImage)
+            var popWinDom = document.getElementById("popWin");
+            popWinDom.classList.remove("zoomOut")
+            popWinDom.classList.add("bounceIn");
+
+            popWinDom.style.display = "flex";
+            var closeBtn = document.getElementById("closeBtn");
+            closeBtn.addEventListener('click', function () {
+                popWinDom.classList.remove("bounceIn")
+                popWinDom.classList.add("zoomOut")
+                popWinDom.style.display = "none";
+
+            })
+
+        }
+
+        function transform(targets, duration) {
+
+            TWEEN.removeAll();
+
+            for (var i = 0; i < objects.length; i++) {
+
+                var object = objects[i];
+                var target = targets[i];
+
+                new TWEEN.Tween(object.position)
+                    .to({
+                        x: target.position.x,
+                        y: target.position.y,
+                        z: target.position.z
+                    }, Math.random() * duration + duration)
+                    .easing(TWEEN.Easing.Exponential.InOut)
+                    .start();
+
+                new TWEEN.Tween(object.rotation)
+                    .to({
+                        x: target.rotation.x,
+                        y: target.rotation.y,
+                        z: target.rotation.z
+                    }, Math.random() * duration + duration)
+                    .easing(TWEEN.Easing.Exponential.InOut)
+                    .start();
+
+            }
+
+            new TWEEN.Tween(this)
+                .to({}, duration * 2)
+                .onUpdate(render)
+                .start();
+
+        }
+
+        function onWindowResize() {
+
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            render();
+
+        }
+
+        function animate() {
+
+            requestAnimationFrame(animate);
+
+            TWEEN.update();
+
+            controls.update();
+
+        }
+
+        function render() {
+
+            renderer.render(scene, camera);
+
+        }
+    </script>
+    <script>
+        $(function () {
+            var buttonContainer = document.querySelector('.button-container');
+            var overlay = document.querySelector('.overlay');
+            var mobileCanvas = document.querySelector('.mobile-canvas')
+
+            mobileCanvas.style.display = 'block'
+            buttonContainer.addEventListener('click', function () {
+                buttonContainer.classList.toggle('open');
+                mobileCanvas.classList.toggle('open');
+                // mobileCanvas.classList.toggle("open");
+
+            }, false);
+            document.getElementById("gotophoto").addEventListener('click', function () {
+                window.location.href = "./three/photoWall/index.html"
+            })
+
+        });
+    </script>
+</body>
+
+</html>
