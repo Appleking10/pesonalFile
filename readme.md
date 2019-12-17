@@ -4,8 +4,8 @@
 这是庞颖国际后援会献给阿庞的一个私人网站
 
 ## Configuration - 配置
-域名：www.pangying.我爱你
-服务器：阿里云服务器
++ 域名：www.pangying.我爱你
++ 服务器：阿里云服务器
 
 ## Usage - 用法
 访问入口：index.html
