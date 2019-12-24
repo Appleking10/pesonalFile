@@ -35,6 +35,7 @@
         }
         if (step === 2) {
             document.getElementById("pangying").style.display = "none"
+            document.getElementById("touch").style.display = "none"
         }
         if (step === 3) {
             // set different delays for each item

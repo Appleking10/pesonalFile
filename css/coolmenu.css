@@ -114,8 +114,8 @@ body {
 .mobile-canvas {
     position: absolute;
     z-index: 0;
-    width: 85px;
-    height: 85px;
+    width: 70px;
+    height: 70px;
     overflow: hidden;
     /* background-color: #411a58; */
     padding: 2em;
@@ -147,9 +147,9 @@ body {
 .button-container {
     position: absolute;
     bottom: 10px;
-    right: 10px;
-    width: 65px;
-    height: 65px;
+    right: 7px;
+    width: 55px;
+    height: 55px;
     z-index: 10;
 }
 
@@ -311,4 +311,31 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: all 600ms cubic-bezier(0.64, 0.04, 0.35, 1) calc((-$delay)/2);
+}
+
+@media screen and (max-width:320px) {
+    .mobile-canvas {
+        right: 0;
+        width: 40px;
+        height: 40px;
+        bottom: 50px;
+    }
+
+    .button-container {
+        width: 40px;
+        height: 40px;
+    }
+
+    .button-container.open .button-child-wrapper {
+        transform: translateX(-80px)
+    }
+
+    .button-child {
+        transform-origin: 100px;
+    }
+
+    .button-child:before {
+        font-size: 20px;
+    }
+
 }

@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src: url('fonts/icomoon.eot?72a6fr');
-    src: url('fonts/icomoon.eot?72a6fr#iefix') format('embedded-opentype'),
-        url('fonts/icomoon.ttf?72a6fr') format('truetype'),
-        url('fonts/icomoon.woff?72a6fr') format('woff'),
-        url('fonts/icomoon.svg?72a6fr#icomoon') format('svg');
+    src: url('fonts/icomoon.eot?aavha8');
+    src: url('fonts/icomoon.eot?aavha8#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?aavha8') format('truetype'),
+        url('fonts/icomoon.woff?aavha8') format('woff'),
+        url('fonts/icomoon.svg?aavha8#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -26,9 +26,16 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-pictures:before {
+.icon-warning:before {
+    content: "\e904";
     font-size: 30px;
+    transform: rotate(-90deg);
+}
+
+.icon-pictures:before {
     content: "\e900";
+    font-size: 30px;
+
 }
 
 .icon-cassette:before {
@@ -49,22 +56,55 @@
 
 }
 
-.icon-video-camera:before {
+.icon-checkered-flag:before {
+    content: "\e905";
     font-size: 30px;
+
+}
+
+.icon-one-finger-tap:before {
+    content: "\e906";
+    font-size: 50px;
+    -webkit-animation-name: scale;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+
+}
+
+.icon-video-camera:before {
     content: "\e914";
+    font-size: 30px;
+
 }
 
 .icon-paste:before {
-    font-size: 30px;
     content: "\e92d";
+    font-size: 30px;
+
 }
 
 .icon-calendar:before {
-    font-size: 30px;
     content: "\e953";
+    font-size: 30px;
+
 }
 
 .icon-heart:before {
-    font-size: 30px;
     content: "\e9da";
+    font-size: 30px;
+
+}
+
+@-webkit-keyframes scale {
+    from {
+        font-size: 50px;
+    }
+
+    50% {
+        font-size: 70px;
+    }
+
+    to {
+        font-size: 50px;
+    }
 }

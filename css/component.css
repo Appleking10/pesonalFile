@@ -75,11 +75,11 @@ body {
     cursor: pointer;
 }
 
-.giftbox::after {
-    content: 'Click me';
+.touch {
+    /* content: '\e906'; */
     position: absolute;
     color: #fff;
-    font-family: 'Peralta', serif;
+    /* font-family: 'Peralta', serif; */
     bottom: 0;
     left: 0;
     width: 100%;
