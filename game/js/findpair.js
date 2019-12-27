@@ -56,7 +56,7 @@ function Findpair(divid, output, config) {
             pairs = 32;
         } else if (hard == 4) {
             row = 10;
-            pairs = 10;
+            pairs = 50;
         } else if (hard == 'debug') {
             row = 2;
             pairs = 2;
@@ -182,21 +182,62 @@ function Findpair(divid, output, config) {
                     var day = new Date();
                     _this.times2 = day.getTime();
                     overtime = _this.times2 - _this.times1;
-                    ifbest = '，总用时<span style="color:red">' + formatTime(overtime) + '</span>';
-                    ifbest += '。<br>能达到的最少步数为<span style="color:red">' + _this.success + '</span>步。';
+                    console.log(overtime)
+                    let score = calcScore(overtime, _this.step, hard)
+                    ifbest = '，总用时<span style="color:red">' + formatTime(overtime) + '</span>。' + '<br>得分:<span style="color:red">' + score + '</span>分';
+                    ifbest += '。<br>能达到的最少步数为<span style="color:red">' + _this.success + '</span>步。<br><span style="color:#ddd;">ps:高分数可能有惊喜喔！</span>';
                     xtip.win({
                         type: 'alert',
-                        tip: '恭喜你，游戏通关！总共用了<span style="color:red">' + _this.step + '</span>步' + ifbest,
+                        tip: '选择模式：<span style="color:#2b84d0;">难度' + hard + '</span>。<br>恭喜你，游戏通关！总共用了<span style="color:red">' + _this.step + '</span>步' + ifbest,
                         icon: 'l',
                         times: 0,
                         lock: true,
                         shade: false,
+                        fun0: function () {
+                            if (score >= 88) {
+                                window.location.href = "../greenWrite/index.html"
+
+                            }
+                        }
                     });
                 }
             });
         }
     };
-
+    //传入参数：所用时间，所走步数，难度模式
+    function calcScore(time, step, hards) {
+        let _hard = hards == "debug" ? 2 : hards * 1 //难度，若是debug模式等于2
+        let fastTime = _hard * 1000; //假设完成最快的时间
+        let timeG, stepG; //时间,步数难度系数;
+        switch (_hard) {
+            case 4:
+                timeG = 0.5;
+                stepG = 0.4
+                break
+            case 6:
+                timeG = 0.4;
+                stepG = 0.3;
+                break;
+            case 8:
+                timeG = 0.25;
+                stepG = 0.25;
+                break;
+            case 10:
+                timeG = 0.15;
+                stepG = 0.15;
+                break;
+            default:
+                timeG = 0.8;
+                stepG = 0.5;
+        }
+        // 计算公式：100 - 时间损失 - 步数损失，小于零分直接给0分
+        let interval = time - fastTime <= 0 ? 0 : time - fastTime
+        let score = 100 - (interval / 1000.00) * timeG - (step - _hard) * (stepG - 0.1)
+        if (score <= 0) {
+            return 0.00
+        }
+        return score.toFixed(2) //取两位小数
+    }
     //毫秒数转时分秒
     function formatTime(mss) {
         var days = parseInt(mss / (1000 * 60 * 60 * 24));

@@ -2,10 +2,6 @@ html,
 body,
 .container {
     height: 100%;
-}
-
-body {
-    /* background: #e74c3c url(../img/winterforest.png) repeat-x bottom center; */
     overflow: hidden;
 }
 

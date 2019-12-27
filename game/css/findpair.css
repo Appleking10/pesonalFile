@@ -97,10 +97,10 @@ p {
     height: 40px;
 }
 
-/* .fbox.hard_4 ul li {
-    width: 60px;
-    height: 60px;
-} */
+.fbox.hard_4 ul li {
+    width: 35px;
+    height: 35px;
+}
 
 .fbox ul li div {
     width: 100%;
@@ -224,6 +224,11 @@ p {
     .fbox.hard_3 ul li {
         width: 40px;
         height: 40px;
+    }
+
+    .fbox.hard_4 ul li {
+        width: 30px;
+        height: 30px;
     }
 
     .fbox_btn div {

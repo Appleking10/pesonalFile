@@ -23,7 +23,7 @@
     function runAnimation() {
         if (step === 1) {
             box.removeEventListener('click', runAnimation);
-            // console.log("1")
+            console.log("1")
         }
         incStep(step);
         if (step === 4) {
@@ -40,7 +40,7 @@
         if (step === 3) {
             // set different delays for each item
             setGridDelays();
-            // console.log("3")
+            console.log("3")
 
         }
         setTimeout(function () {
