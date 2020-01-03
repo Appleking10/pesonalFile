@@ -1,3 +1,10 @@
+.icon-home {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 999;
+}
+
 .demo-1 .sl-slider-wrapper {
     position: absolute;
     width: 100%;

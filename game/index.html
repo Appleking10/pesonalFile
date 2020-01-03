@@ -21,7 +21,7 @@
 </head>
 
 <body>
-
+    <span class="icon-home" id="home"></span>
     <table class="ftable">
         <tr>
             <td>
@@ -57,11 +57,10 @@
                 <div class="button-child-wrapper">
                     <div class="button-child icon-pictures" id="gotophoto">
 
-
                     </div>
                     <div class="button-child icon-lab" id="gotoTest">
                     </div>
-                    <div class="button-child icon-warning" id="gotoEgg">
+                    <div class="button-child icon-checkered-flag" id="gotoEgg">
 
                     </div>
                 </div>
@@ -115,7 +114,10 @@
                 window.location.href = '../test/index.html'
             })
             document.getElementById("gotoEgg").addEventListener('click', function () {
-                window.location.href = '../greenWrite/index.html'
+                window.location.href = '#'
+            })
+            document.getElementById("home").addEventListener('click', function () {
+                window.location.href = "../index.html"
             })
         });
     </script>

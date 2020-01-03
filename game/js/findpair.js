@@ -194,7 +194,7 @@ function Findpair(divid, output, config) {
                         lock: true,
                         shade: false,
                         fun0: function () {
-                            if (score >= 88) {
+                            if (score >= 90) {
                                 window.location.href = "../greenWrite/index.html"
 
                             }
@@ -206,8 +206,8 @@ function Findpair(divid, output, config) {
     };
     //传入参数：所用时间，所走步数，难度模式
     function calcScore(time, step, hards) {
-        let _hard = hards == "debug" ? 2 : hards * 1 //难度，若是debug模式等于2
-        let fastTime = _hard * 1000; //假设完成最快的时间
+        let _hard = hards == "debug" ? 2 : (hards + 1) * 2 //难度，若是debug模式等于2
+        let fastTime = _hard * 2 * 1000; //假设完成最快的时间
         let timeG, stepG; //时间,步数难度系数;
         switch (_hard) {
             case 4:
@@ -215,7 +215,7 @@ function Findpair(divid, output, config) {
                 stepG = 0.4
                 break
             case 6:
-                timeG = 0.4;
+                timeG = 0.35;
                 stepG = 0.3;
                 break;
             case 8:
@@ -230,9 +230,9 @@ function Findpair(divid, output, config) {
                 timeG = 0.8;
                 stepG = 0.5;
         }
+        let interval = time - fastTime <= 0 ? 0 : time - fastTime; //时间差
         // 计算公式：100 - 时间损失 - 步数损失，小于零分直接给0分
-        let interval = time - fastTime <= 0 ? 0 : time - fastTime
-        let score = 100 - (interval / 1000.00) * timeG - (step - _hard) * (stepG - 0.1)
+        let score = 100 - (interval / 1000.00) * timeG - (step - _hard * 2) * stepG
         if (score <= 0) {
             return 0.00
         }

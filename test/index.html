@@ -21,8 +21,8 @@
 </head>
 
 <body>
-
     <div class="container demo-1">
+        <span class="icon-home" id="home"></span>
 
         <div id="slider" class="sl-slider-wrapper">
 
@@ -169,31 +169,18 @@
                     </div>
                 </div>
                 <div class="sl-slide bg-2" data-orientation="horizontal" data-slice1-rotation="-5"
-                    data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
+                    data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1" id="result">
                     <div class="sl-slide-inner">
                         <div class="deco" data-icon="t"></div>
-                        <h2>结果</h2>
+                        <h2>游戏结束</h2>
                         <div class="option-wrap">
-                            <div class="result"">结果</div>
+                            <div class="result">结果：xxxx</div>
                             <!-- <div class=" finsh"> </div> -->
                         </div>
                     </div>
                 </div>
             </div><!-- /sl-slider -->
 
-            <!-- <nav id="nav-arrows" class="nav-arrows">
-                <span class="nav-arrow-prev">Previous</span>
-                <span class="nav-arrow-next">Next</span>
-            </nav> -->
-
-            <!-- <nav id="nav-dots" class="nav-dots">
-                <span class="nav-dot-current"></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </nav> -->
 
         </div><!-- /slider-wrapper -->
         <div class="mobile-canvas" id="mobile-canvas">
@@ -211,7 +198,7 @@
                         </div>
                         <div class="button-child icon-checkered-flag" id="gotoGame">
                         </div>
-                        <div class="button-child icon-warning" id="gotoEgg">
+                        <div class="button-child icon-lab" id="gotoEgg">
 
 
                         </div>
@@ -261,10 +248,14 @@
                             window.location.href = "../three/photoWall/index.html"
                         })
                         document.getElementById("gotoEgg").addEventListener('click', function () {
-                            window.location.href = '../greenWrite/index.html'
+                            window.location.href = '#'
                         })
                         document.getElementById("gotoGame").addEventListener('click', function () {
                             window.location.href = '../game/index.html'
+
+                        })
+                        document.getElementById("home").addEventListener('click', function () {
+                            window.location.href = '../index.html'
                         })
                     },
                     initEvents = function () {
@@ -304,6 +295,9 @@
                                 optionRecord[currentPage] = {
                                     option: that.innerText
                                 }
+                                if ($(that).hasClass('opb')) {
+                                    $('#result').show()
+                                }
                                 if (currentPage == 1 && option == "opa") {
 
                                     $('.sl-slide-inner')[currentPage + 1].childNodes[
@@ -311,6 +305,7 @@
 
                                 }
                                 console.log("current:", optionRecord)
+
                                 return false;
                             }, 500)
 
