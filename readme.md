@@ -12,13 +12,15 @@
 
 ## Development - 开发
 + depend: jQuery,svg,three.min.js,tween.min.js
-+ frame：div+css/VUE
++ frame：div+css
 
 ## Changelog - 更新日志
-`2019.12.17`:update open loading,photo wall,menu page
+`2019.12.17`:update open loading,photo wall and menu
+`2020.01.06`:update test page,game and surprised page
 
 ## FAQ - 常见问题
-无完全适配PC端页面
++ 适配了基本常见的设备尺寸，一些小屏幕可能会出现溢出的情况
++ 小众浏览器可能会出现动画效果偏差，无法正常浏览网页
 
 ## Support - 支持
 ### 所属
