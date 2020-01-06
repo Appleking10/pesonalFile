@@ -343,7 +343,7 @@
 						.css( cssStyle );
 			
             $nextSlide.show();
-            return this.current;
+            return this.current-1;
 			
 		},
 		_validateValues : function( config ) {

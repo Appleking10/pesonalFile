@@ -236,12 +236,12 @@
 .demo-1 .option,
 .demo-1 .prev {
     margin: 5px auto;
-    width: 60%;
+    width: 80%;
     max-width: 400px;
     position: relative;
     cursor: pointer;
     height: 40px;
-    line-height: 40px;
+    /* line-height: 40px; */
     border: 1px solid slategray;
     display: flex;
     justify-content: center;
@@ -277,8 +277,12 @@
 /* First Slide */
 .demo-1 .bg-1 .sl-slide-inner,
 .demo-1 .bg-1 .sl-content-slice {
-    background: #fff;
+    background: #ECD82C;
 }
+
+/* .demo-1 .bg-1 .sl-slide-inner .option-wrap {
+    color: #333333;
+} */
 
 /* Second Slide */
 .demo-1 .bg-2 .sl-slide-inner,
@@ -724,10 +728,10 @@
     }
 
     .demo-1 .sl-slide h2 {
-        line-height: 22px;
-        font-size: 18px;
-        margin-bottom: -40px;
-        letter-spacing: 8px;
+        line-height: 16px;
+        font-size: 14px;
+        margin-bottom: -80px;
+        letter-spacing: 2px;
     }
 
     .demo-1 .sl-slide blockquote p:before {
@@ -748,8 +752,15 @@
 
     .demo-1 .sl-slide blockquote,
     .demo-1 .option-wrap {
-        margin: 0 0 -100px 0;
+        margin: 0 0 -130px 0;
 
     }
 
+    .demo-1 .sl-slider .index h2 {
+        margin-bottom: -120px;
+    }
+
+    .index .option-wrap {
+        margin: 0 0 -200px 0;
+    }
 }
