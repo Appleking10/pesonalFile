@@ -31,12 +31,12 @@
                     data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
                     <div class="sl-slide-inner">
                         <div class="deco" data-icon="q"></div>
-                        <h2>hello，假设你现在是庞颖的宠物猫，咪咪，而且是只会说话的猫猫。<br>接下来你将陪庞老师走过漫长的岁月，陪她做出一系列重要的决定，你做好准备了吗？</h2>
+                        <h2>hello，假设你现在是庞颖的宠物猫，咪咪，而且是只会说话的猫猫。接下来你将陪庞老师走过漫长的岁月，陪她做出一系列重要的决定，你做好准备了吗？</h2>
                         <div class="option-wrap">
                             <div class="option index-op">接受挑战！</div>
                             <div class="option index-op">不接受也得接受！</div>
-
                         </div>
+                        <blockquote>本故事纯属虚构，如有雷同，那是不可能滴！</blockquote>
                     </div>
                 </div>
                 <div class="sl-slide bg-1" data-orientation="vertical" data-slice1-rotation="10"
@@ -50,70 +50,11 @@
                             <!-- <div class="prev">back to previous</div> -->
 
                         </div>
+                        <blockquote>本故事纯属虚构，如有雷同，那是不可能滴！</blockquote>
+
                     </div>
                 </div>
-                <!-- <div class="sl-slide bg-4" data-orientation="horizontal" data-slice1-rotation="-25"
-                    data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-                    <div class="sl-slide-inner">
-                        <div class="deco" data-icon="H"></div>
-                        <h2>初三毕业之际，阿庞抱着我，问我要不要去新加坡留学</h2>
-                        <blockquote>
-                            <p>You have just dined, and however scrupulously the slaughterhouse is concealed in the
-                                graceful distance of miles, there is complicity.</p><cite>Ralph Waldo Emerson</cite>
-                        </blockquote>
-                        <div class="option-wrap ">
-                            <div class="option goSG checkboxWrapper smallCheckboxSize theme7">
-                                <input type="checkbox" id="sample1">
-                                <label for="sample1">
-                                    <i>
-                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px"
-                                            height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50"
-                                            xml:space="preserve">
-                                            <circle fill="none" stroke="#fff" stroke-width="3" stroke-miterlimit="10"
-                                                cx="25.11" cy="24.883" r="23.519" />
-                                            <path fill="none" stroke-width="3" stroke-miterlimit="10"
-                                                d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
-                                            S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
-                                        </svg>
-                                    </i>
-                                    
-                                </label>
-                            </div>
 
-                            <div class="option stayhome checkboxWrapper smallCheckboxSize theme6">
-                                <input type="checkbox" id="sample1">
-                                <label for="sample1">
-                                    <i>
-                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px"
-                                            height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50"
-                                            xml:space="preserve">
-                                            <circle fill="none" stroke="#fff" stroke-width="3" stroke-miterlimit="10"
-                                                cx="25.11" cy="24.883" r="23.519" />
-                                            <path fill="none" stroke-width="3" stroke-miterlimit="10"
-                                                d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
-                                            S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
-                                        </svg>
-                                    </i>
-                                    选项2
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- <div class="sl-slide bg-2" data-orientation="horizontal" data-slice1-rotation="-5"
-                    data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1" id="result">
-                    <div class="sl-slide-inner">
-                        <div class="deco" data-icon="t"></div>
-                        <h2>游戏结束</h2>
-                        <div class="option-wrap">
-                            <div class="result">结果：xxxx</div>
-                           
-                        </div>
-                    </div>
-                </div> -->
             </div><!-- /sl-slider -->
 
 
@@ -147,11 +88,18 @@
         $(function () {
             var optionRecord = [],
                 optionList = {
-                    stayHome: "留在廊坊读高中 -->",
-                    goSG: "去新加坡读高中 -->",
-                    study: "安心学习，两耳不闻天下事 -->",
-                    goDebate: "加入辩论社 -->",
-                    goDrama: "廊坊“赵丽蓉”崭露头角 -->"
+                    stayHome: "留在廊坊读高中 --> ",
+                    goSG: "去新加坡读高中 --> ",
+                    study: "安心学习，两耳不闻天下事 --> ",
+                    goDebate: "加入辩论社 --> ",
+                    goDrama: "廊坊“赵丽蓉”崭露头角 --> ",
+                    work: "大学毕业后当上了北京的公务员 --> ",
+                    goNETEM: "准备考研并且成功考上 --> ",
+                    goAct: "阿庞考入中央戏剧学院，登上大荧幕，出演了秦教授导演的《猫咪归来》崭露头角，荣获金猫电影节最佳新人奖。",
+                    goNUS: "去了新加坡国立大学 --> ",
+                    directing: "阿庞导演了处女作《乌云公主》，荣获金猫电影节最佳导演奖。",
+                    workAgin: "阿庞摆脱考研想法，继续工作，为社会主义事业添砖加瓦，在岗位上发光发热。",
+                    goHospital: "因为阿庞带我去了医院植发错过了比赛，（。。。小梦补充。。。）毛绒绒的我陪着"
                 },
                 currentPage;
             var Page = (function () {
@@ -171,6 +119,7 @@
                             ${optionHtml}
                         </div>
                     </div>
+                    <blockquote>本故事纯属虚构，如有雷同，那是不可能滴！</blockquote>
                 </div>`
                     let $items = $(itemHtml);
                     slitslider.add($items)
@@ -178,10 +127,8 @@
                 var $prev = $('.prev'),
                     slitslider = $('#slider').slitslider({
                         onBeforeChange: function (slide, pos) {
-
                             // $nav.removeClass('nav-dot-current');
                             // $nav.eq(pos).addClass('nav-dot-current');
-
                         }
                     }),
 
@@ -272,6 +219,49 @@
                             currentPage = slitslider.next()
 
                         })
+                        $(document).on("click", ".work", function () {
+                            optionRecord.push('work');
+                            addItem('bg-3', 'c',
+                                "阿庞当上了北京的公务员一枚。工作几年后，阿庞又动摇起来考研的念头，阿庞抱着我，纠结辞职读研还是继续工作，我说：",
+                                [{
+                                    class: "goNETEM",
+                                    content: "考研"
+                                }, {
+                                    class: "workAgin",
+                                    content: "继续工作"
+                                }])
+                            currentPage = slitslider.next()
+
+                        })
+                        $(document).on("click", ".goNETEM", function () {
+                            optionRecord.push('goNETEM');
+                            addItem('bg-2', 'j',
+                                "阿庞辞去了公务员的工作，申请了很多国外知名大学，最后，收到了三所知名大学的offer，阿庞又苦恼于要选择哪所大学了。我说：",
+                                [{
+                                    class: "goCambridge",
+                                    content: "去剑桥大学吧！"
+                                }, {
+                                    class: "goNUS",
+                                    content: "去新加坡国立大学吧！"
+                                }, {
+                                    class: "goYale",
+                                    content: "去耶鲁大学吧！"
+                                }])
+                            currentPage = slitslider.next()
+                        })
+                        $(document).on("click", ".goNUS", function () {
+                            optionRecord.push('goNUS');
+                            addItem('bg-4', 'f',
+                                "阿庞进入了新国大，读了土木工程，进入了新国大辩论队。在要去参加王者归来辩论赛前，由于我经常被阿庞抱着撸毛，于是我秃了，秃然我可怜巴巴的望着阿庞，我希望阿庞选择带我去医院还是去赶飞机,我对阿庞说：",
+                                [{
+                                    class: "goHospital",
+                                    content: "阿庞我秃然秃了，快带我去植发！"
+                                }, {
+                                    class: "goAirport",
+                                    content: "阿庞比赛加油，拿好行李，不要误机了。"
+                                }])
+                            currentPage = slitslider.next()
+                        })
                         $(document).on("click", ".goDrama", function () {
                             optionRecord.push('goDrama');
                             addItem('bg-4', 'a',
@@ -284,28 +274,10 @@
                                     content: "表演系"
                                 }])
                             currentPage = slitslider.next()
+                        })
 
-                        })
-                        //动态添加元素绑定监听事件
-                        $(document).on("click", ".study", function () {
-                            optionRecord.push('study');
-                            let optionContent = "经过我的选择，阿庞选择："
-                            optionRecord.forEach(item => {
-                                optionContent += optionList[item]
-                            })
-                            optionContent += "阿庞幸福快乐过一生"
-                            addItem('bg-4 index', 'g', optionContent, [{
-                                class: "end",
-                                content: "游戏结束，重新开始！"
-                            }])
-                            currentPage = slitslider.next()
-                        });
-                        $(document).on('click', '.end', function () {
-                            history.go(0)
-                        })
                         $('.goSG').on('click', function () {
                             optionRecord.push('goSG')
-
                             addItem('bg-4', 'h',
                                 "进入华侨中学，高考过后，面对多所世界名校的offer，阿庞抱着我发愁，到底要去哪个大学。我说：", [{
                                     class: "goNUS",
@@ -317,13 +289,46 @@
                             currentPage = slitslider.next()
                         })
 
+                        // ending part
 
-                        // $navArrows.children(':first').on('click', function () {
+                        //动态添加元素绑定监听事件
+                        $(document).on("click", ".goAct", function () {
+                            optionRecord.push('goAct');
+                            showEnd();
+                        })
+                        $(document).on("click", ".directing", function () {
+                            optionRecord.push('directing');
+                            showEnd();
+                        })
+                        $(document).on("click", ".study", function () {
+                            optionRecord.push('study');
+                            showEnd()
+                        });
+                        $(document).on("click", ".workAgin", function () {
+                            optionRecord.push('workAgin');
+                            showEnd()
+                        });
+                        $(document).on("click", ".goHospital", function () {
+                            optionRecord.push('goHospital');
+                            showEnd()
+                        });
+                        $(document).on('click', '.end', function () {
+                            history.go(0)
+                        })
 
-                        //     slitslider.previous();
-                        //     return false;
-
-                        // });
+                        function showEnd() {
+                            let optionContent = "经过我的建议，阿庞的人生轨迹："
+                            optionRecord.forEach((item, index) => {
+                                optionContent += `${index+1}. ${optionList[item]}`
+                            })
+                            optionContent += "阿庞幸福快乐过一生。"
+                            addItem('bg-4 index', 'g', optionContent, [{
+                                class: "end",
+                                content: "游戏结束，重新开始！"
+                            }])
+                            currentPage = slitslider.next()
+                        }
+                        // ending part
 
                         // $nav.each(function (i) {
 
@@ -354,21 +359,6 @@
             })();
 
             Page.init();
-
-            /**
-             * Notes: 
-             * 
-             * example how to add items:
-             */
-
-            /*
-            
-            var $items  = $('<div class="sl-slide sl-slide-color-2" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1"><div class="sl-slide-inner bg-1"><div class="sl-deco" data-icon="t"></div><h2>some text</h2><blockquote><p>bla bla</p><cite>Margi Clarke</cite></blockquote></div></div>');
-            
-            // call the plugin's add method
-            ss.add($items);
-
-            */
 
         });
     </script>

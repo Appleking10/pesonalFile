@@ -207,8 +207,8 @@
     font-weight: 700;
     letter-spacing: 13px;
     text-transform: uppercase;
-    width: 80%;
-    left: 10%;
+    width: 90%;
+    left: 5%;
     text-align: center;
     line-height: 50px;
     bottom: 50%;
@@ -232,7 +232,12 @@
     padding: 0;
 }
 
-.demo-1 .sl-slide blockquote p,
+.demo-1 .sl-slide blockquote {
+    top: 20px;
+    font-size: 12px;
+    color: silver;
+}
+
 .demo-1 .option,
 .demo-1 .prev {
     margin: 5px auto;
@@ -240,7 +245,8 @@
     max-width: 400px;
     position: relative;
     cursor: pointer;
-    height: 40px;
+    min-height: 40px;
+    padding: 10px;
     /* line-height: 40px; */
     border: 1px solid slategray;
     display: flex;
@@ -706,6 +712,11 @@
 
 
 /* Media Queries for custom slider */
+@media screen and (max-width: 320px) {
+    .demo-1 .mobile-canvas {
+        bottom: 0;
+    }
+}
 
 @media screen and (max-width: 660px) {
     .demo-1 .deco {
