@@ -86,6 +86,12 @@ body,
     transform: rotate(-20deg);
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
+
+}
+
+.touch::before {
+    -webkit-animation: scale 1s ease infinite;
+    animation: scale 1s ease infinite;
 }
 
 .giftbox>div {
@@ -1194,6 +1200,20 @@ body,
     100% {
         transform: translateY(100%);
         opacity: 0;
+    }
+}
+
+@keyframes scale {
+    0% {
+        font-size: 24px
+    }
+
+    50% {
+        font-size: 35px;
+    }
+
+    100% {
+        font-size: 24px;
     }
 }
 
