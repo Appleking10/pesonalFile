@@ -102,13 +102,20 @@
             align-items: center;
             transition: all 0.5s;
             background-color: rgba(0, 0, 0, 0.3);
-            z-index: 2;
+            z-index: 999;
+        }
+
+        .content-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: cornsilk;
         }
 
         .content-wrap {
-            width: 100%;
-            height: 500px;
-            margin-bottom: 30px;
+            width: 95%;
+            min-height: 400px;
+            height: 80%;
+            margin: 20px 0;
             text-align: center;
             line-height: 500px;
             background: ghostwhite;
@@ -139,6 +146,12 @@
                 width: 100%;
             }
         }
+
+        @media screen and (max-height:570px) {
+            .content-wrap {
+                margin: 5px 0;
+            }
+        }
     </style>
 </head>
 
@@ -159,7 +172,8 @@
         <button id="grid">我方了</button>
     </div>
     <div class="popWin bounceIn" id="popWin">
-        <div class="content-wrap">这是放照片/视频的地方</div>
+        <div class="content-name" id="contentName"></div>
+        <div class="content-wrap" id="photoWrap"></div>
         <div class="closeBtn" id="closeBtn">返回</div>
     </div>
     <div class="mobile-canvas" id="mobile-canvas">
@@ -194,7 +208,6 @@
             // table.push("../../img2/" + rander + ".jpg");
         }
         table = getArrayItems(rander, 48)
-        console.log(table)
         var camera, scene, renderer;
         var controls;
 
@@ -728,13 +741,43 @@
         }
 
         function elClick(el, index) {
-
+            // console.log(index)
             var popWinDom = document.getElementById("popWin");
+            var photoWrap = document.getElementById("photoWrap");
+            var name = document.getElementById("contentName")
+            var obj = {
+                0: "见贤思齐焉16",
+                1: "230号小行星",
+                2: "Gingerette",
+                3: "Gwendolyn-lleko",
+                4: "LIGHT1998m",
+                5: "阿粲Gaooo",
+                6: "可乐雪碧奥利奥",
+                7: "哪个名字还没有被注册",
+                8: "匿名用户",
+                9: "柴郡猫琦琦",
+                10: "上埜久",
+                11: "小花_BallandFlower",
+                12: "做一读书人＿YL"
+            }
             popWinDom.classList.remove("zoomOut")
             popWinDom.classList.add("bounceIn");
 
             popWinDom.style.display = "flex";
+            if (obj[index]) {
+                photoWrap.innerHTML = ""
+                photoWrap.style.backgroundImage = "url(../../tinified/" + index + ".jpg)";
+                photoWrap.style.backgroundSize = "100%"
+                photoWrap.style.backgroundRepeat = "no-repeat"
+                photoWrap.style.backgroundPositionY = "center"
+                name.innerHTML = "from 微博:" + obj[index]
+            } else {
+                name.innerHTML = "from 微博: 突然失去梦想的apple"
+                photoWrap.style.backgroundImage = "unset";
+                photoWrap.innerHTML = "这是显示照片/视频的地方"
+            }
             var closeBtn = document.getElementById("closeBtn");
+
             closeBtn.addEventListener('click', function () {
                 popWinDom.classList.remove("bounceIn")
                 popWinDom.classList.add("zoomOut")

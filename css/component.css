@@ -89,6 +89,7 @@ body,
 
 }
 
+
 .touch::before {
     -webkit-animation: scale 1s ease infinite;
     animation: scale 1s ease infinite;
