@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/animate.css">
     <link rel="stylesheet" href="../../icomoon/style.css">
     <link rel="stylesheet" href="../../css/coolmenu.css">
+    <!-- <link rel="stylesheet" href="../../banner/css/main.css"> -->
     <title>阿庞的照片墙</title>
     <style>
         html,
@@ -131,6 +132,22 @@
             text-align: center;
         }
 
+        .prev-btn,
+        .next-btn {
+            position: absolute;
+            left: 10px;
+            width: 30px;
+            height: 30px;
+            background: #000;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .next-btn {
+            left: unset;
+            right: 10px;
+        }
+
         #outmenu {
             position: absolute;
             /* width: 150px; */
@@ -163,6 +180,9 @@
     <script src="js/TrackballControls.js"></script>
     <script src="js/CSS3DRenderer.js"></script>
 
+    <!-- <script src="../../banner/js/main.js"></script> -->
+
+
     <span class="icon-home" id="home"></span>
     <div id="container"></div>
     <div id="menu">
@@ -173,7 +193,10 @@
     </div>
     <div class="popWin bounceIn" id="popWin">
         <div class="content-name" id="contentName"></div>
-        <div class="content-wrap" id="photoWrap"></div>
+        <div class="content-wrap" id="photoWrap">
+        </div>
+        <div class="prev-btn"></div>
+        <div class="next-btn"></div>
         <div class="closeBtn" id="closeBtn">返回</div>
     </div>
     <div class="mobile-canvas" id="mobile-canvas">
@@ -199,6 +222,8 @@
         <div class="overlay"></div>
     </div>
     <script>
+        // const AwesomeSlider = require("awesome-slider");
+
         var table = [];
         var rander = []
 
@@ -740,8 +765,23 @@
 
         }
 
+        function manual() {
+            var previous = document.createElement("div");
+            previous.className = "manual-btn manual-previous";
+
+            var next = document.createElement("div");
+            next.className = "manual-btn manual-next";
+
+            return {
+                previous: previous,
+                next: next
+            };
+        }
+
         function elClick(el, index) {
             // console.log(index)
+            // var container1 = document.querySelector(".content-wrap")
+
             var popWinDom = document.getElementById("popWin");
             var photoWrap = document.getElementById("photoWrap");
             var name = document.getElementById("contentName")
@@ -758,19 +798,27 @@
                 9: "柴郡猫琦琦",
                 10: "上埜久",
                 11: "小花_BallandFlower",
-                12: "做一读书人＿YL"
+                12: "做一读书人＿YL",
+                13: "突然失去梦想的apple",
+                14: "呼风唤雨我未来的新娘",
+                15: "ae_薄荷",
+                16: "不执于不执",
+                17: "一朝之昫"
+
             }
             popWinDom.classList.remove("zoomOut")
             popWinDom.classList.add("bounceIn");
 
             popWinDom.style.display = "flex";
             if (obj[index]) {
+
                 photoWrap.innerHTML = ""
                 photoWrap.style.backgroundImage = "url(../../tinified/" + index + ".jpg)";
-                photoWrap.style.backgroundSize = "100%"
+                photoWrap.style.backgroundSize = "contain"
                 photoWrap.style.backgroundRepeat = "no-repeat"
-                photoWrap.style.backgroundPositionY = "center"
+                photoWrap.style.backgroundPosition = "center"
                 name.innerHTML = "from 微博:" + obj[index]
+
             } else {
                 name.innerHTML = "from 微博: 突然失去梦想的apple"
                 photoWrap.style.backgroundImage = "unset";
@@ -852,6 +900,7 @@
 
         }
     </script>
+
     <script>
         $(function () {
             var buttonContainer = document.querySelector('.button-container');
