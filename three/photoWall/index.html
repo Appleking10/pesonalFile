@@ -135,17 +135,22 @@
         .prev-btn,
         .next-btn {
             position: absolute;
-            left: 10px;
+            left: 5px;
             width: 30px;
             height: 30px;
-            background: #000;
+            color: #ffffff;
+            background:rgba(127, 255, 255, 0.25);
+            font-size: 24px;
+            line-height: 30px;
+            text-align: center;
+            /* background: #000; */
             top: 50%;
             transform: translateY(-50%);
         }
 
         .next-btn {
             left: unset;
-            right: 10px;
+            right:5px;
         }
 
         #outmenu {
@@ -195,8 +200,8 @@
         <div class="content-name" id="contentName"></div>
         <div class="content-wrap" id="photoWrap">
         </div>
-        <div class="prev-btn"></div>
-        <div class="next-btn"></div>
+        <div class="prev-btn" id="prev"><</div>
+        <div class="next-btn" id="next">></div>
         <div class="closeBtn" id="closeBtn">返回</div>
     </div>
     <div class="mobile-canvas" id="mobile-canvas">
@@ -442,12 +447,14 @@
                 }
             ]
             for (var i = 0; i < table.length; i++) {
-
+                
                 var element = document.createElement('div');
                 element.className = 'element';
                 element.style.background = 'url(' + table[i] + ')';
                 element.style.backgroundSize = "100%"
-
+                if(i>36){
+                    element.style.background = '#fff'
+                }
                 var object = new THREE.CSS3DObject(element);
                 object.position.x = Math.random() * 4000 - 2000;
                 object.position.y = Math.random() * 4000 - 2000;
@@ -779,45 +786,99 @@
         }
 
         function elClick(el, index) {
-            // console.log(index)
+            console.log(el)
             // var container1 = document.querySelector(".content-wrap")
 
             var popWinDom = document.getElementById("popWin");
             var photoWrap = document.getElementById("photoWrap");
-            var name = document.getElementById("contentName")
+            var name = document.getElementById("contentName");
+            var prev = $('#prev')
+            var next = $('#next')
+
             var obj = {
-                0: "见贤思齐焉16",
-                1: "230号小行星",
+
+                0: "230号小行星",
+                1: {name:"见贤思齐焉16",index:[1,18]},
                 2: "Gingerette",
                 3: "Gwendolyn-lleko",
-                4: "LIGHT1998m",
+                4: {name:"LIGHT1998m",index:[4,50]},
                 5: "阿粲Gaooo",
-                6: "可乐雪碧奥利奥",
+                6: {name:"可乐雪碧奥利奥",index:[6,20]},
                 7: "哪个名字还没有被注册",
-                8: "匿名用户",
+                8: {name:"匿名用户",index:[8,51]},
                 9: "柴郡猫琦琦",
                 10: "上埜久",
                 11: "小花_BallandFlower",
                 12: "做一读书人＿YL",
                 13: "突然失去梦想的apple",
-                14: "呼风唤雨我未来的新娘",
+                14: {name:"呼风唤雨我未来的新娘",index:[14,22]},
                 15: "ae_薄荷",
-                16: "不执于不执",
-                17: "一朝之昫"
-
+                16: {name:"不执于不执",index:[16,53]},
+                17: "一朝之昫",
+                18:{name:"草木茶枫",index:[54,55,56]},
+                19:"Wren-Lee",
+                20:{name:"阿暄儿",index:[27,57]},
+                21:"白茶清欢无别事",
+                22:{name:"不想翻身的咸鱼少年",index:[58,59]},
+                23:"葱葱葱呀",
+                24:"豆沙0268",
+                25:"小宇hymncafe",
+                26:"陸子的名称已被占用",
+                27:{name:"漫步在岁月洪流的历历",index:[34,35]},
+                28:"行远还",
+                29:"琴瑟笙箫一样不会",
+                30:"球球力士",
+                31:{name:"苏小羊__ya",index:[60,61,62]},
+                32:{name:"窦小豆piu",index:[31,32,33]},
+                33:{name:"小狐狸的吃货啊",index:[63,64,65]},
+                34:{name:"银月七星",index:[40,37]},
+                35:{name:"总星系第一温柔",index:[38,39]},
+                36:"招财猫摆摆手"
             }
             popWinDom.classList.remove("zoomOut")
             popWinDom.classList.add("bounceIn");
+            prev.hide()
+            next.hide()
 
             popWinDom.style.display = "flex";
             if (obj[index]) {
+                
+                photoWrap.innerHTML = "";
+                photoWrap.style.backgroundSize = "contain";
+                photoWrap.style.backgroundRepeat = "no-repeat";
+                photoWrap.style.backgroundPosition = "center";
 
-                photoWrap.innerHTML = ""
-                photoWrap.style.backgroundImage = "url(../../tinified/" + index + ".jpg)";
-                photoWrap.style.backgroundSize = "contain"
-                photoWrap.style.backgroundRepeat = "no-repeat"
-                photoWrap.style.backgroundPosition = "center"
-                name.innerHTML = "from 微博:" + obj[index]
+                if(typeof obj[index] === "object"){
+                    prev.show();
+                    next.show();
+                    let current = 0
+                    let photo_obj = obj[index];
+                    name.innerHTML =  "from 微博:" + photo_obj.name;
+                    photoWrap.style.backgroundImage = "url(../../tinified/" + photo_obj.index[current] + ".jpg)";
+
+                    next.on('click',function(){
+                        
+                        if(photo_obj.index[current+1]){
+                            current ++;
+                        }else {
+                            current = 0
+                        }
+                        photoWrap.style.backgroundImage = "url(../../tinified/" + photo_obj.index[current] + ".jpg)";
+                    })
+                    prev.on('click',function(){
+                        if(current != 0){
+                            current --
+                        }else if(current == 0){
+                            current = photo_obj.index.length-1
+                        }
+                        photoWrap.style.backgroundImage = "url(../../tinified/" + photo_obj.index[current] + ".jpg)";
+                    })
+
+                }else{
+                    name.innerHTML = "from 微博:" + obj[index]
+                    photoWrap.style.backgroundImage = "url(../../tinified/" + index + ".jpg)";
+                }
+               
 
             } else {
                 name.innerHTML = "from 微博: 突然失去梦想的apple"
