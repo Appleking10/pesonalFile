@@ -425,26 +425,6 @@
                     y: -480
                 },
                 {
-                    x: -120,
-                    y: -600
-                },
-                {
-                    x: 0,
-                    y: -600
-                },
-                {
-                    x: 0,
-                    y: -720
-                },
-                {
-                    x: 120,
-                    y: -480
-                },
-                {
-                    x: 120,
-                    y: -600
-                },
-                {
                     x: 240,
                     y: -460
                 },
@@ -452,14 +432,42 @@
                     x: 360,
                     y: -480
                 },
+                
+                {
+                    x: 120,
+                    y: -480
+                },
+                {
+                    x: 0,
+                    y: -720
+                },
+                
+                {
+                    x: 120,
+                    y: -600
+                },
+
+
+                {
+                    x: 0,
+                    y: -600
+                },
+
+                {
+                    x: -120,
+                    y: -600
+                },
+                
                 {
                     x: -240,
                     y: -600
                 },
+                
                 {
                     x: 240,
                     y: -600
                 },
+               
                 {
                     x: 120,
                     y: -720
@@ -481,15 +489,16 @@
                 element.style.backgroundSize = "100%";
                 element.style.backgroundRepeat = "no-repeat";
                 element.style.backgroundPosition = "center"
+                if (i >=39&&i<=42) {
+                        element.style.border = '8px solid #DBDB70';
+                        element.style.boxShadow = "0 1px 2px rgba(0, 0, 0, 0.3)";
 
-                if (i > 36) {
+                    }
+                if (i >44) {
                     element.style.backgroundImage = 'unset';
 
                     element.style.backgroundColor = '#fff'
-                    if (i == 37) {
-                        element.style.background = 'red'
-
-                    } else if (i == 47) {
+                    if (i == 47) {
                         element.style.backgroundImage = 'url(../../tinified/zb/cover.png)';
 
                     }
@@ -825,7 +834,7 @@
         }
 
         function elClick(el, index) {
-            // console.log(el)
+            console.log(index)
             // var container1 = document.querySelector(".content-wrap")
             $('#tips').hide()
             var popWinDom = document.getElementById("popWin");
@@ -922,22 +931,38 @@
                 },
                 34: {
                     name: "银月七星",
-                    index: [40, 37]
+                    index: [40, 49]
                 },
                 35: {
                     name: "总星系第一温柔",
                     index: [68, 39]
                 },
                 36: "招财猫摆摆手",
-                37: {
-                    type: "video",
-                    name: "Szdma"
-                },
+                37:"沈小岳岳岳",
                 38: "阿萌同学_",
+                39:{
+                    type:"video",
+                    name:"szdma"
+                },
+                40: {
+                    type: "video",
+                    name: "新一冲鸭"
+                },
+                41: {
+                    type: "video",
+                    name: "小螃蟹们"
+                },
+                42: {
+                    type: "video",
+                    name: "波子汽水味er"
+                },
+                43:"请叫我彩虹机灵",
+                44:"吕小梦Dreaming",
                 47: {
-                    name: "阿庞周边开售啦！",
-                    index: [99, 100, 101, 102, 103, 104]
-                }
+                    name: "庞颖国际后援会",
+                    index: [99, 100, 101, 102, 103]
+                },
+
             }
             popWinDom.classList.remove("zoomOut")
             popWinDom.classList.add("bounceIn");
@@ -955,10 +980,28 @@
                 if (typeof obj[index] === "object") {
                     let photo_obj = obj[index];
                     name.innerHTML = "from 微博:" + photo_obj.name;
-                    if (obj[index].type == 'video' && index == 37) {
+                    if (obj[index].type == 'video' && index == 40) {
                         photoWrap.style.backgroundImage = "unset"
                         photoWrap.innerHTML =
-                            `<iframe style="width:100%; height:100%;" src="https://player.bilibili.com/player.html?aid=84186075&cid=144005523&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>`
+                            `<iframe style="width:100%; height:100%;" src='http://player.youku.com/embed/XNDUxOTc0Njc3Ng==' frameborder=0 'allowfullscreen'></iframe>`
+                        return
+                    }
+                    if (obj[index].type == 'video' && index == 41) {
+                        photoWrap.style.backgroundImage = "unset"
+                        photoWrap.innerHTML =
+                            `<iframe style="width:100%; height:100%;"  src="https://player.bilibili.com/player.html?aid=84612377&cid=144712468&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>`
+                        return
+                    }
+                    if (obj[index].type == 'video' && index == 42) {
+                        photoWrap.style.backgroundImage = "unset"
+                        photoWrap.innerHTML =
+                            `<iframe style="width:100%; height:100%;"  src="https://player.bilibili.com/player.html?aid=80542714&cid=137835403&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>`
+                        return
+                    }
+                    if (obj[index].type == 'video' && index == 39) {
+                        photoWrap.style.backgroundImage = "unset"
+                        photoWrap.innerHTML =
+                            `<iframe style="width:100%; height:100%;"  src="//player.bilibili.com/player.html?aid=84186075&cid=144005523&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>`
                         return
                     }
                     prev.show();

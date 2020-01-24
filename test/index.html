@@ -30,8 +30,10 @@
                 <div class="sl-slide bg-2 index" data-orientation="vertical" data-slice1-rotation="10"
                     data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
                     <div class="sl-slide-inner">
-                        <div class="deco" data-icon="q"></div>
-                        <h2>hello，假设你现在是庞颖的宠物猫，咪咪，而且是只会说话的猫猫。接下来你将陪庞老师走过漫长的岁月，陪她做出一系列重要的决定，你做好准备了吗？</h2>
+                        <div class="deco" data-icon="s">
+                            <img src=".././img2/test/1.jpg" alt="" class="testIcon">
+                        </div>  
+                        <h2>hello，你现在是庞老师家的猫，咪咪，而且是只会说话的猫猫。接下来你将陪庞老师走过漫长的岁月，陪她做出一系列重要的决定，你做好准备了吗？</h2>
                         <div class="option-wrap">
                             <div class="option index-op">接受挑战！</div>
                             <div class="option index-op">不接受也得接受！</div>
@@ -42,8 +44,10 @@
                 <div class="sl-slide bg-1" data-orientation="vertical" data-slice1-rotation="10"
                     data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
                     <div class="sl-slide-inner">
-                        <div class="deco" data-icon="t"></div>
-                        <h2>初三毕业之际，阿庞抱着我，问我要不要去新加坡留学，她很纠结。这时，我说：</h2>
+                        <div class="deco" data-icon="t">
+                            <img src=".././img2/test/2.jpg" alt="" class="testIcon">
+                        </div>
+                        <h2>初中，阿庞抱着我，问，要不要去新加坡留学，她很纠结。这时，我说：</h2>
                         <div class="option-wrap">
                             <div class="option goSG">去吧！外面的世界更大</div>
                             <div class="option stayHome">不要去吧，我觉得你先好好读书，以后也有很多机会去到国外的。</div>
@@ -104,14 +108,14 @@
                     gopqs: "参加第四季奇葩说，成为网红 -->",
                     directing: "阿庞导演了处女作《乌云公主》，荣获金猫电影节最佳导演奖。",
                     workAgin: "阿庞摆脱考研想法，继续工作，为社会主义事业添砖加瓦，在岗位上发光发热。",
-                    goHospital: "因为阿庞带我去了医院植发错过了比赛，（。。。小梦补充。。。）毛绒绒的我陪着",
+                    goHospital: "因为阿庞带我去了医院植发错过了比赛。最后，毛绒绒的我陪着",
                     goCambridge: "阿庞成功考上剑桥大学。",
-                    goSeeCat: "庞老师连夜赶回新加坡，抱着光滑的我，决定改行研发猫病生发液，获得诺贝猫生理学或医学奖，最后，顶着茂密头发的",
+                    goSeeCat: "庞老师连夜赶回新加坡，抱着光滑的我，心里暗暗下定决心，改行研发猫饼生发液，并因此荣获诺贝猫生理学或医学奖。满头乌黑浓密秀发的",   
                     nochat: "阿庞选择去规划交通，之后进入政坛，顺风顺水步步高升。",
                     beTeam: "阿庞阿詹组成哈佛耶鲁联队，夺得华语辩论赛冠军 -->",
-                    gofive: "参加第五季和第六季奇葩说，阿詹阿庞获得bbteam。。。小梦补充",
+                    gofive: "去参加《奇葩说》第五季！第二年参加了第六季，所在的携程战队成为了BBTeam。",
                     goTravel: "阿詹阿庞决定不参加奇葩说了，俩人开始欢乐旅游。最后阿庞成为行业顶尖咨询公司CEO，",
-                    besingle: "耶鲁和哈佛第一轮双双出局。阿庞毕业后加入波士顿咨询公司,顺利成为行业顶尖咨询公司CEO，",
+                    besingle: "在华语辩论世界杯小组赛中，耶鲁战队和哈佛战队在第一轮被双双淘汰出局。阿庞毕业后加入波士顿咨询公司,顺利成为行业顶尖咨询公司CEO，",
 
                 },
                 currentPage;
@@ -126,7 +130,9 @@
                     })
                     let itemHtml = `<div class="sl-slide ${bg}" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
                     <div class="sl-slide-inner">
-                        <div class="deco" data-icon="${icon}"></div>
+                        <div class="deco" data-icon="q">
+                            <img src="${icon}" alt="" class="testIcon">
+                        </div>
                         <h2>${question}</h2>
                         <div class="option-wrap">
                             ${optionHtml}
@@ -150,9 +156,9 @@
                         initEvents();
                         var buttonContainer = document.querySelector('.button-container');
                         var overlay = document.querySelector('.overlay');
-                        var mobileCanvas = document.querySelector('.mobile-canvas')
-                        document.getElementById("mobile-canvas").style.display = "block"
-                        document.getElementById("mobile-canvas").style.zIndex = 10
+                        var mobileCanvas = document.querySelector('.mobile-canvas');
+                        document.getElementById("mobile-canvas").style.display = "block";
+                        document.getElementById("mobile-canvas").style.zIndex = 10;
                         buttonContainer.addEventListener('click', function () {
                             buttonContainer.classList.toggle('open');
                             mobileCanvas.classList.toggle('open');
@@ -204,7 +210,7 @@
                         })
                         $('.stayHome').on('click', function () {
                             optionRecord.push('stayHome')
-                            addItem('bg-3', 'o',
+                            addItem('bg-3', '../img2/test/3.jpg',
                                 "阿庞最后如愿考上石家庄二中，学校的辩论队招生，阿庞抱着我苦恼的说我喜欢表达也擅长表演，到底要选择哪个社团。我说:",
                                 [{
                                     class: "goDebate",
@@ -220,7 +226,7 @@
                         })
                         $(document).on("click", ".goDebate", function () {
                             optionRecord.push('goDebate');
-                            addItem('bg-2', 'm',
+                            addItem('bg-2', '../img2/test/4.jpg',
                                 "阿庞如愿的加入了学校的辩论队，并且在辩论赛上发挥出色。高中毕业后阿庞考上了清华，加入了清华辩论队。大学毕业之际，考研还是工作，这是一个问题。我说：",
                                 [{
                                     class: "goNETEM",
@@ -234,8 +240,8 @@
                         })
                         $(document).on("click", ".work", function () {
                             optionRecord.push('work');
-                            addItem('bg-3', 'c',
-                                "阿庞当上了北京的公务员一枚。工作几年后，阿庞又动摇起来考研的念头，阿庞抱着我，纠结辞职读研还是继续工作，我说：",
+                            addItem('bg-3', '../img2/test/5.jpg',
+                                "阿庞考上了北京市东七门街道办事处公务员。工作几年后，阿庞又动摇起来考研的念头，阿庞抱着我，纠结辞职读研还是继续工作，我说：",
                                 [{
                                     class: "goNETEM",
                                     content: "考研"
@@ -248,7 +254,7 @@
                         })
                         $(document).on("click", ".goNETEM", function () {
                             optionRecord.push('goNETEM');
-                            addItem('bg-2', 'j',
+                            addItem('bg-2', '../img2/test/6.jpg',
                                 "阿庞辞去了公务员的工作，申请了很多国外知名大学，最后，收到了三所知名大学的offer，阿庞又苦恼于要选择哪所大学了。我说：",
                                 [{
                                     class: "goCambridge",
@@ -264,21 +270,21 @@
                         })
                         $(document).on("click", ".goYale", function () {
                             optionRecord.push('goYale');
-                            addItem('bg-1', 'f',
-                                "我陪着阿庞来到了耶鲁大学，阿庞问我要不要和留学生们一起组建辩论联队，",
+                            addItem('bg-1', '../img2/test/7.jpg',
+                                "我陪着阿庞来到了耶鲁大学，阿庞问我，要不要和留学生们一起组建辩论联队，",
                                 [{
                                     class: "beTeam",
                                     content: "组建耶鲁哈佛联队"
                                 }, {
                                     class: "besingle",
-                                    content: "自己组建耶鲁战队"
+                                    content: "自己组建耶鲁战队就行啦。"
                                 }])
                             currentPage = slitslider.next()
                         })
                         $(document).on("click", ".goNUS", function () {
                             optionRecord.push('goNUS');
-                            addItem('bg-4', 'f',
-                                "阿庞进入了新国大，读了土木工程，进入了新国大辩论队。在要去参加王者归来辩论赛前，由于我经常被阿庞抱着撸毛，于是我秃了，秃然我可怜巴巴的望着阿庞，我希望阿庞选择带我去医院还是去赶飞机,我对阿庞说：",
+                            addItem('bg-4', '../img2/test/8.jpg',
+                                "阿庞进入新加坡国立大学，攻读土木工程专业，并加入了新国大辩论队。在前往澳门参加“王者归来”辩论赛之前，由于我天天被阿庞抱着撸，我秃噜毛了，阿庞焦急万分。阿庞摸着我光滑的小脑袋，泛起了愁。这时候，你说：",
                                 [{
                                     class: "goHospital",
                                     content: "阿庞我秃然秃了，快带我去植发！"
@@ -290,8 +296,8 @@
                         })
                         $(document).on("click", ".goDrama", function () {
                             optionRecord.push('goDrama');
-                            addItem('bg-4', 'a',
-                                "廊坊“赵丽蓉”出道，高考成绩出来后，我在床上看着阿庞对着电脑苦恼，纠结选择哪个专业，导演系和表演系，我说：",
+                            addItem('bg-4', '../img2/test/9.jpg',
+                                "廊坊“赵丽蓉”出道啦！高考成绩出来后，我懒洋洋地趴在床上，看着阿庞纠结到底去中央戏剧学院的表演系还是导演系。我说：",
                                 [{
                                     class: "directing",
                                     content: "导演系"
@@ -303,8 +309,8 @@
                         })
                         $(document).on("click", ".goSG", function () {
                             optionRecord.push('goSG')
-                            addItem('bg-4', 'h',
-                                "进入华侨中学，高考过后，面对多所世界名校的offer，阿庞抱着我发愁，到底要去哪个大学。我说：", [{
+                            addItem('bg-4', '../img2/test/10.jpg',
+                                "阿庞顺利从华侨中学毕业，面对多所世界名校的offer，阿庞抱着我发愁，她到底该去哪所大学呢？", [{
                                     class: "goNUS",
                                     content: "去新加坡国立大学"
                                 }, {
@@ -316,11 +322,11 @@
 
                         $(document).on("click", ".goAirport", function () {
                             optionRecord.push('goAirport')
-                            addItem('bg-2', 'j',
+                            addItem('bg-2', '../img2/test/11.jpg',
                                 "阿庞顺利赶机，参加“王者归来辩论赛”。在“开心农场”偷盗,有损无损道德”，新国大vs港中文，阿詹阿庞第一次相遇，比赛结束后，阿庞打电话给我说，想去跟邱晨合影又很紧张，我说：",
                                 [{
                                     class: "goSeeCat",
-                                    content: "赶紧偷拍完快回来见我最后一撮根毛！"
+                                    content: "赶紧偷拍完快飞回来见我最后一撮根毛！"
                                 }, {
                                     class: "goPhoto",
                                     content: "喜欢就去！"
@@ -329,8 +335,8 @@
                         })
                         $(document).on("click", ".goPhoto", function () {
                             optionRecord.push('goPhoto')
-                            addItem('bg-4', 'n',
-                                "成功和港中文队合影。六年后，阿庞又参加了新加坡亚太赛，休息的酒店隔壁住着阿詹，最后一天晚上抱着我说，我们要不要去找阿詹小酌聊天。我说:",
+                            addItem('bg-4', '../img2/test/12.jpg',
+                                "阿庞成功和港中文队合影。六年后，阿庞参加了新加坡亚太赛，酒店隔壁房住着阿詹。比赛的最后一天晚上，阿庞抱着我问，我们要不要去找阿詹小酌聊聊天？我说：",
                                 [{
                                     class: "nochat",
                                     content: "不要去了，明天还要早起上班去规划交通呢。"
@@ -342,20 +348,20 @@
                         })
                         $(document).on("click", ".gochat", function () {
                             optionRecord.push('gochat')
-                            addItem('bg-1', 'x',
-                                "阿庞和阿詹通宵畅聊之后，感情升温。后来我陪着阿庞经常去哈佛找阿詹蹭饭，阿詹也会给我做辣子鸡味猫粮，我也喜欢这个姐姐。华语辩论赛要举办了，辈分比较高的她们俩问我要不要去参加",
+                            addItem('bg-1', '../img2/test/13.jpg',
+                                "阿庞和阿詹通宵畅聊之后，感情升温。后来阿庞到了美国耶鲁大学读硕士，她常常带着我去哈佛找阿詹蹭饭，阿詹也特意给我做那子寂味的猫粮，我很喜欢这个小姐姐。听说华语辩论世界杯就要举办了，她俩问我，要不要去参加？",
                                 [{
                                     class: "beTeam",
-                                    content: "去！你们俩不是最喜欢辩论吗。"
+                                    content: "那就跟詹青云一起组建哈佛耶鲁联队吧！" 
                                 }, {
                                     class: "gopqs",
-                                    content: "不去咯，我听说奇葩说第四季开始报名了，你们俩可以去试试"
+                                    content: "不去咯，我听说奇葩说第四季开始报名了，你们俩可以去试试。"
                                 }])
                             currentPage = slitslider.next()
                         })
                         $(document).on("click", ".beTeam", function () {
                             optionRecord.push('beTeam')
-                            addItem('bg-2', 'd',
+                            addItem('bg-2', '../img2/test/15.jpg',
                                 "阿庞和阿詹组成的哈佛耶鲁联队在华语辩论世界杯夺冠后，阿庞抱着我问，要不要去第五季《奇葩说》呢？",
                                 [{
                                     class: "gofive",
@@ -368,8 +374,8 @@
                         })
                         $(document).on("click", ".gopqs", function () {
                             optionRecord.push('gopqs')
-                            addItem('bg-3', 'k',
-                                "阿庞阿詹报名奇葩说，在奇葩说表现突出，成为网红。在第五季报名时期，她们俩在去旅游+入职和参加下一季之间选择，阿庞在纠结的时候抱着我，问我要不要去",
+                            addItem('bg-3', '../img2/test/16.jpg',
+                                "阿庞阿詹不去当高龄队员，而是参加《奇葩说》第四季，并成为网红。在第五季报名前，阿庞和阿詹在旅行后入职和参加《奇葩说》第五季之间徘徊不定。我说：",
                                 [{
                                     class: "gofive",
                                     content: "去！再争取好成绩！"
@@ -385,59 +391,59 @@
                         //动态添加元素绑定监听事件
                         $(document).on("click", ".goAct", function () {
                             optionRecord.push('goAct');
-                            showEnd();
+                            showEnd(9);
                         })
                         $(document).on("click", ".directing", function () {
                             optionRecord.push('directing');
-                            showEnd();
+                            showEnd(17);
                         })
                         $(document).on("click", ".study", function () {
                             optionRecord.push('study');
-                            showEnd()
+                            showEnd(19)
                         });
                         $(document).on("click", ".workAgin", function () {
                             optionRecord.push('workAgin');
-                            showEnd()
+                            showEnd(18)
                         });
                         $(document).on("click", ".goHospital", function () {
                             optionRecord.push('goHospital');
-                            showEnd()
+                            showEnd(20)
                         });
                         $(document).on("click", ".goCambridge", function () {
                             optionRecord.push('goCambridge');
-                            showEnd()
+                            showEnd(6)
                         });
                         $(document).on("click", ".goSeeCat", function () {
                             optionRecord.push('goSeeCat');
-                            showEnd()
+                            showEnd(20)
                         });
                         $(document).on("click", ".nochat", function () {
                             optionRecord.push('nochat');
-                            showEnd()
+                            showEnd(5)
                         });
                         $(document).on("click", ".gofive", function () {
                             optionRecord.push('gofive');
-                            showEnd()
+                            showEnd(22)
                         });
                         $(document).on("click", ".goTravel", function () {
                             optionRecord.push('goTravel');
-                            showEnd()
+                            showEnd(21)
                         });
                         $(document).on("click", ".besingle", function () {
                             optionRecord.push('besingle');
-                            showEnd()
+                            showEnd(7)
                         });
                         $(document).on('click', '.end', function () {
                             history.go(0)
                         })
 
-                        function showEnd() {
+                        function showEnd(bg) {
                             let optionContent = "经过我的建议，阿庞的人生轨迹："
                             optionRecord.forEach((item, index) => {
                                 optionContent += `${index+1}. ${optionList[item]}`
                             })
-                            optionContent += "阿庞幸福快乐过一生。"
-                            addItem('bg-4 index', 'g', optionContent, [{
+                            optionContent += "阿庞吃好喝好幸福一生。"
+                            addItem('bg-4 index', `../img2/test/${bg}.jpg`, optionContent, [{
                                 class: "end",
                                 content: "游戏结束，重新开始！"
                             }])
