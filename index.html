@@ -14,7 +14,13 @@
     <link rel="stylesheet" type="text/css" href="css/coolmenu.css" />
 
     <script src="js/jquery-2.1.1.min.js"></script>
-
+	<style>
+	@media screen and (max-width: 320px){
+		.mobile-canvas{
+			bottom: 0;
+		}
+	}
+	</style>
 
     <!--[if IE]>
   			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -23,7 +29,7 @@
 
 <body>
     <div class="container">
-        <h1 class="title"><span>to Pangying</span></h1>
+        <h1 class="title" id="tips" style="display: none;"><span>点击菜单进入其他页面 --></span></h1>	
         <canvas id="snowfall"></canvas>
         <div id="merrywrap" class="merrywrap">
             <div class="giftbox">
@@ -1602,9 +1608,9 @@
                 </div>
             </div>
             <div class="background">
-                <h1 class="py title">Pangying</h1>
-                <h1 class="nice title">nice to meet you</h1>
-                <h1 class="happy title">Happy birthday!</h1>
+                <!-- <h1 class="py title">Pangying</h1> -->
+                <h1 class="nice title">人间妄想庞颖小姐姐</h1>
+                <h1 class="happy title">生日快乐！</h1>
                 <img src="./img2/ap2.png" alt="阿庞的漫画像" width="300px">
 
             </div>

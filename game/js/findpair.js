@@ -219,12 +219,12 @@ function Findpair(divid, output, config) {
                 stepG = 0.3;
                 break;
             case 8:
-                timeG = 0.25;
-                stepG = 0.25;
-                break;
-            case 10:
                 timeG = 0.15;
                 stepG = 0.15;
+                break;
+            case 10:
+                timeG = 0.05;
+                stepG = 0.05;
                 break;
             default:
                 timeG = 0.8;
@@ -232,7 +232,7 @@ function Findpair(divid, output, config) {
         }
         let interval = time - fastTime <= 0 ? 0 : time - fastTime; //时间差
         // 计算公式：100 - 时间损失 - 步数损失，小于零分直接给0分
-        let score = 100 - (interval / 1000.00) * timeG - (step - _hard * 2) * stepG
+        let score = 100 - (interval / 1000.00) * timeG - (  step - _hard * 2) * stepG
         if (score <= 0) {
             return 0.00
         }

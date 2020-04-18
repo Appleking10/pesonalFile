@@ -29,7 +29,8 @@
         if (step === 4) {
             letitsnow();
             setTimeout(function () {
-                document.getElementById("mobile-canvas").style.display = "block"
+                document.getElementById("mobile-canvas").style.display = "block";
+                document.getElementById("tips").style.display = "block"
             }, 1000)
             return;
         }
