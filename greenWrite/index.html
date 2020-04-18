@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隐藏小小彩蛋1</title>
+    <link rel="shortcut icon" href="../img/favicon.ico" />
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/default.css"> -->
+    <!--  -->
+    <style type="text/css">
+        html,
+        body {
+            width: 100%;
+            margin: 0px;
+            font-family: 'Helvetica Neue';
+            background-color: #020202;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .terminal {
+            width: 90%;
+            font-size: 22px;
+            color: #00fd55;
+            letter-spacing: 2px;
+            /* position: absolute;
+            top: 50%;
+            left: 20%; */
+        }
+
+        .terminal::before {
+            content: ">";
+            margin-right: 10px;
+        }
+
+        .return {
+            display: none;
+            margin: 10px auto;
+            margin-top: 30px;
+            color: #00fd55;
+            border: 1px solid #00fd55;
+            padding: 10px;
+            -webkit-animation-name: shineBlue;
+            -webkit-animation-duration: 3s;
+            -webkit-animation-iteration-count: infinite;
+        }
+
+        @-webkit-keyframes shineBlue {
+            from {
+                -webkit-box-shadow: 0 0 9px #333;
+            }
+
+            50% {
+                -webkit-box-shadow: 0 0 18px #00fd55;
+            }
+
+            to {
+                -webkit-box-shadow: 0 0 9px #333;
+            }
+        }
+
+        @media screen and (max-width:320px) {
+            .terminal {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="terminal"></div>
+    <div class="return">返回游戏</div>
+
+
+
+    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/typewriting.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setTimeout(function () {
+                $('.terminal').typewriting(
+                    "Hello,恭喜你发现这个页面！这个网站只是送给阿庞的一个小小礼物，做得不是很专业。如果你有发现什么bug或者想加入庞颖国际后援会，欢迎联系<span style='font-size:20px;font-style:italic;'>pyfansclub@yeah.net</span><br><br><br>感谢所有向后援会投稿的大闸蟹和小闸蟹们。<br> <span style='font-size:18px;'> from：庞颖国际后援会开发组</span>", {
+                        "typing_interval": 120,
+                        "blink_interval": "0.8s",
+                        "cursor_color": "#00fd55"
+                    },
+                    function () {
+                        // console.log("END");
+                        $('.return').show();
+                        $('.return').on('click', function () {
+                            window.location.href = '../game/index.html'
+                        })
+                    });
+                // setTimeout(function () {
+                //     $('.terminal').rewrite("This is TypeWriting.js", function () {
+                //         // console.log("END, 2.");
+                //     });
+                // }, 3300);
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>
